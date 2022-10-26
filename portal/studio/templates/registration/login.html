@@ -1,0 +1,39 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<body>
+
+<div class="form_login">
+    <div class="login_text">
+        {% if form.errors %}
+        <p>Ваше имя пользователя и пароль не совпадают. Пожалуйста, попробуйте еще раз.</p>
+        {% endif %}
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>У вашего аккаунта нет доступа к этой странице. Продолжать,
+            пожалуйста, войдите с учетной записью, которая имеет доступ.</p>
+        {% else %}
+        <p>Пожалуйста, войдите, чтобы увидеть эту страницу.</p>
+        {% endif %}
+        {% endif %}
+    </div>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Логин" autofocus autocapitalize="none" autocomplete="username" id="id_username" required>
+        <input type="password" name="password" autocomplete="current-password" placeholder="Пароль" id="id_password" required>
+        <input type="submit" id="submit" value="Вход">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>

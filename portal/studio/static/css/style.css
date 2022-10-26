@@ -1,0 +1,216 @@
+
+/*Главная*/
+body{
+    margin: 0 auto;
+    max-width: 1200px;
+    background-color: #eff3e5;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #5f624f;
+    border-radius: 20px;
+}
+header > a{
+    color: #edefe1;
+
+}
+span, a, h3{
+    font-size: 24px;
+}
+h3,h2,h1{
+    color: #5f624f;
+}
+h1{
+    font-size: 38px;
+}
+h2, span{
+    color: #edefe1;
+}
+header > h2{
+    font-size: 2.7em;
+    padding-right: 60%;
+}
+.register > a{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: lemonchiffon;
+}
+.mein{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.link{
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+.content{
+    border-radius: 20px;
+    padding: 40px;
+    margin-left: 40px;
+    background-color: #d9dcd5;
+}
+.info > img{
+    width: 128px;
+}
+.link > a{
+    font-size: 25pt;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #5f624f;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid black;
+    margin-top: 20px;
+}
+.info_index{
+    display: flex;
+}
+.info_text {
+    margin-left: 20px;
+}
+.strong{
+        display: flex;
+    align-items: center;
+}
+.strong_p{
+        display: flex;
+}
+.link_filter > a{
+    margin-right: 10px;
+    text-decoration: none;
+    color: lemonchiffon;
+}
+/*----------------------------------------*/
+/*Логин - Регистрация - Создание*/
+form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.login_text{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+form>input{
+    width: 400px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.37);
+}
+#submit{
+    border: 0;
+    width: 200px;
+    background-color: lemonchiffon;
+}
+#image{
+    border: 0;
+    width: auto;
+}
+.form_login{
+    margin-top: 50px;
+}
+.input > input{
+    width: 400px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.37);
+}
+#id_img{
+    border: 0;
+}
+.table{
+    display: flex;
+}
+.input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*----------------------------------------*/
+/*Мои заказы*/
+.order_list{
+    margin-top: 60px;
+}
+.link_list > a{
+    text-decoration: none;
+    color: lemonchiffon;
+}
+/*----------------------------------------*/
+/*Адаптивка*/
+@media screen and (max-width: 768px){
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    header > h2{
+        font-size: 26px;
+        margin-left: 30px;
+    }
+    .register > a{
+        font-size: 16pt;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .mein{
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
+    .link {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+    }
+    .link > a {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 16pt;
+    }
+    .user{
+        font-size: 14pt;
+    }
+    .content > h1 {
+        font-size: 28pt;
+    }
+    .info > h3{
+        font-size: 18pt;
+    }
+    .info > img{
+        width: 128px;
+    }
+    .info > p{
+        font-size: 18pt;
+    }
+    .content > p{
+        font-size: 18pt;
+    }
+    .link_list > p, .link_list > a{
+        font-size: 18pt;
+    }
+    .login_text > h2{
+        font-size: 28pt;
+    }
+    form > input{
+        height: 50px;
+    }
+}

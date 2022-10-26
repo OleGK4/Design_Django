@@ -1,0 +1,34 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<body>
+<div class="mein">
+    <div class="content">
+        <h1>Пользователь: {{ user.name }}</h1>
+        <div class="project">
+            <div class="info">
+                <p><strong>Имя:</strong> {{ user.name}}</p>
+                <p><strong>Фамилия:</strong> {{ user.surname}}</p>
+                <p><strong>Отчество:</strong> {{ user.patronymic }}</p>
+                <p><strong>Почта:</strong> {{ user.email }}</p>
+                <p><strong>Роль:</strong> {{ user.role }}</p>
+                <p class="strong_p"><strong class="strong">Фото:</strong> <img src="{% thumbnail user.photo_file 'index' %}"></p>
+            </div>
+        </div>
+        <div class="link">
+            <a href="{% url 'index'  %}">Главная</a>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>

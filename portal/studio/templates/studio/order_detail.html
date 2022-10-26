@@ -1,0 +1,45 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<body>
+<div class="mein">
+    <div class="content">
+        <h1>Заказ: {{ order.name }}</h1>
+        <div class="project">
+            <div class="info">
+                <p><strong>Время создания:</strong> {{ order.day_add}}</p>
+                <p><strong>Заказчик:</strong> {{ order.customer_order}}</p>
+                <p><strong>Описание:</strong> {{ order.summary }}</p>
+                <p><strong>Категория:</strong> {{ order.category }}</p>
+                <p><strong>Статус:</strong> {{ order.get_status_name }}</p>
+                <p class="strong_p"><strong class="strong">Фото:</strong> <img src="{% thumbnail order.photo_file 'index' %}"></p>
+                {% if order.status == 'a' %}
+                <p><strong>Коментарий:</strong> {{ order.comment }}</p>
+                {% endif %}
+                {% if order.status == 'c' %}
+                <p class="strong_p"><strong class="strong">Результат:</strong> <img src="{% thumbnail order.img 'index' %}"></p>
+                {% endif %}
+                {% if order.status != 'a' and order.status != 'c' %}
+                <div class="link">
+                    <a href="{% url 'order-delete' order.pk %}">Удалить заказ</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="link">
+            <a href="{% url 'index'  %}">Главная</a>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<div class="form_login">
+    <div class="login_text">
+            <h1>Удалить заказ</h1>
+        <p>Вы уверены, что хотите удалить заказ: {{ order }}?</p>
+    </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" id="submit" action="" value="Да, удалить.">
+    </form>
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>

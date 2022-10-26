@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<body>
+<div class="form_login">
+    <div class="login_text">
+        <h2>Регистрация</h2>
+    </div>
+<form method="post">
+    {% csrf_token %}
+      <table class="table">
+            {% for field in form %}
+            <div class="input">
+                {{ field.errors }}
+                {{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </table>
+    <p><input type="checkbox" required> Согласие на обработку персональных данных></p>
+    <input type="submit" id="submit" value="Зарегистрироваться">
+    <input type="hidden" name="next" value="next">
+</form>
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>

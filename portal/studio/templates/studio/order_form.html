@@ -1,0 +1,62 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<body>
+<div class="form_login">
+    {% if not user.is_staff %}
+        <div class="login_text">
+        <h2>Создание заказа</h2>
+    </div>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name" id="id_name" placeholder="Название" required>
+        <input type="text" name="summary" id="id_summary" placeholder="Описание" required>
+        <span>Выбор категории</span>
+        <select name="category" id="id_category">
+            <option value selected>---------</option>
+            <option value="1">3D дизайн</option>
+            <option value="2">2D дизайн</option>
+            <option value="3">Эскиз</option>
+        </select><br>
+        <input type="file" name="photo_file" id="image" accept="image/*">
+        <input type="submit" id="submit" value="Создать">
+        <input type="hidden" name="next" value="next">
+    </form>
+    {% endif %}
+    {% if perms.studio.can_mark_returned %}
+            <div class="login_text">
+        <h2>Обновление заказа</h2>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {% for field in form %}
+            <div class="input">
+                {{ field.errors }}
+                <br>{{ field.label_tag }} {{ field }}
+                {% if field.help_text %}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </table>
+        <br>
+        <input type="submit" id="submit" value="Обновить">
+        <input type="hidden" name="next" value="next">
+        <div class="link_filter">
+            <a href="{% url 'index'  %}">Главная</a>
+        </div>
+    </form>
+    {% endif %}
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>

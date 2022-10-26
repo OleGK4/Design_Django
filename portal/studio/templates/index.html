@@ -1,0 +1,62 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<body>
+<header>
+    <h2>Design.pro</h2>
+    {% if request.user.is_authenticated %}
+    <span class="user">
+             Пользователь: {{ user.get_username }}
+            </span>
+    <div class="register">
+    {% else %}
+        <a href="{% url 'register'  %}">Регистрация</a>
+        <a href="{% url 'login'%}?next={{request.path}}">Вход</a>
+    {% endif %}
+    </div>
+</header>
+<div>
+    <div class="mein">
+        <div class="link">
+            <a href="{% url 'index'  %}">Главная</a>
+            {% if user.is_authenticated and not user.is_staff %}
+            <a href="{% url 'user-profile' %}">Мой профиль</a>
+            <a href="{% url 'my-order' %}">Мои заказы</a>
+            <a href="{% url 'order-create' %}">Создать заказ</a>
+            <a href="{% url 'logout'%}?next={{request.path}}">Выйти</a>
+            {% endif %}
+            {% if perms.studio.can_mark_returned %}
+            <a href="{% url 'all-order' %}">Все заказы</a>
+            <a href="{% url 'logout'%}?next={{request.path}}">Выйти</a>
+            {% endif %}
+        </div>
+        <div class="content">
+            <h1>Наши продукты</h1>
+            {% for order in num_order %}
+            <div class="info_index">
+                <img src="{% thumbnail order.photo_file 'index' %}" alt="Картинка">
+                <div class="info_text">
+                    <h3>Кирпич</h3>
+                    <p>Дата заказа: {{ order.day_add }}</p>
+                    <p>Категория: {{ order.category}}</p>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+            <br>
+            <p>Количество принятых проектов: {{ num_status }}</p>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>

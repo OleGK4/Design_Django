@@ -1,0 +1,58 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<div class="order_list">
+    <div class="mein">
+        <div class="link">
+            <a href="{% url 'index'  %}">Главная</a>
+            <a href="{% url 'my-order' %}">Мои заказы</a>
+            <a href="{% url 'order-create' %}">Создать заказ</a>
+            <a href="{% url 'logout'%}?next={{request.path}}">Выйти</a>
+        </div>
+        <div class="content">
+            <h1>Мои заказы</h1>
+            <div class="link_filter"><p>Фильтр по статусу:</p>
+                {% if not request.GET.status %}
+                <p>Все</p>
+                {% else %}
+                <div class="link_filter">
+                    <a href="{% url 'my-order' %}">Все</a>
+                    {% endif %}
+                    {% for item in status_list %}
+                    {% if request.GET.status != item.0 %}
+                    <a href="{% url 'my-order' %}?status={{item.0}}"> ({{item.1}}) </a>
+                    {% else %}
+                    {{item.status}}
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <br>
+                {% if order_list %}
+                {% for order in order_list %}
+                <div class="project">
+                    <div class="link_list">
+                        <a href="{% url 'order-detail' order.pk %}">{{order.name}} </a>
+                        <div><span class="font-weight-bold">Статус:</span> {{order.get_status_name}}</div>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
+                {% else %}
+                <p>Заказов нет</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; Design.pro</p>
+    </footer>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" media="screen" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Дизайн студия</title>
+</head>
+<body>
+<div class="order_list">
+    <div class="mein">
+        <div class="link">
+            <a href="{% url 'index'  %}">Главная</a>
+            <a href="{% url 'all-order' %}">Все заказы</a>
+            <a href="{% url 'logout'%}?next={{request.path}}">Выйти</a>
+        </div>
+        <div class="content">
+            <h1>Ваши заказы</h1>
+            {% if order_list %}
+            {% for order in order_list %}
+            <div class="project">
+                <div class="link_list">
+                    <a href="{% url 'order-detail' order.pk %}">{{order.name}}</a> {% if user.is_staff %}- Заказчик:{{ order.customer_order }}
+                    <div class="link_list">Статус: {{ order.get_status_name }} {% endif %} {% if perms.studio.can_mark_returned %}- <a
+                            href="{% url 'order-update' order.id %}">Обновить статус</a></div>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+            {% else %}
+            <p>Заказов нет</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; Design.pro</p>
+</footer>
+</body>
+</html>
