@@ -19,7 +19,7 @@
                 <p><strong>Отчество:</strong> {{ user.patronymic }}</p>
                 <p><strong>Почта:</strong> {{ user.email }}</p>
                 <p><strong>Роль:</strong> {{ user.role }}</p>
-                <p class="strong_p"><strong class="strong">Фото:</strong> <img src="{% thumbnail user.photo_file 'index' %}"></p>
+                <p class="strong_p"><strong class="strong">Фото:</strong> <img class="image" src="{% thumbnail user.photo_file 'index' %}"></p>
             </div>
         </div>
         <div class="link">

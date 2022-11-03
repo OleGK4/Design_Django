@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-    <h2>Design.pro</h2>
+    <h1>Design.pro</h1>
     {% if request.user.is_authenticated %}
     <span class="user">
              Пользователь: {{ user.get_username }}
@@ -27,7 +27,6 @@
         <div class="link">
             <a href="{% url 'index'  %}">Главная</a>
             {% if user.is_authenticated and not user.is_staff %}
-            <a href="{% url 'user-profile' %}">Мой профиль</a>
             <a href="{% url 'my-order' %}">Мои заказы</a>
             <a href="{% url 'order-create' %}">Создать заказ</a>
             <a href="{% url 'logout'%}?next={{request.path}}">Выйти</a>
@@ -38,12 +37,12 @@
             {% endif %}
         </div>
         <div class="content">
-            <h1>Наши продукты</h1>
+            <h2>Наша продукция</h2>
             {% for order in num_order %}
             <div class="info_index">
-                <img src="{% thumbnail order.photo_file 'index' %}" alt="Картинка">
+                <img class="image" src="{% thumbnail order.photo_file 'index' %}" alt="Картинка">
                 <div class="info_text">
-                    <h3>Кирпич</h3>
+                    <h3>{{ order.name }}</h3>
                     <p>Дата заказа: {{ order.day_add }}</p>
                     <p>Категория: {{ order.category}}</p>
                 </div>

@@ -1,5 +1,4 @@
-
-/*Главная*/
+                                /*Главная*/
 body{
     margin: 0 auto;
     max-width: 1200px;
@@ -19,20 +18,27 @@ header > a{
 
 }
 span, a, h3{
+    text-decoration: none;
     font-size: 24px;
 }
-h3,h2,h1{
+h3,h2{
     color: #5f624f;
 }
 h1{
     font-size: 38px;
 }
-h2, span{
-    color: #edefe1;
+h2{
+    font-size: 35px;
 }
-header > h2{
+h1, span{
+    color: lemonchiffon;
+}
+.image{
+    border-radius: 12px;
+}
+header > h1{
     font-size: 2.7em;
-    padding-right: 60%;
+    padding-right: 40%;
 }
 .register > a{
     margin-left: 10px;
@@ -91,8 +97,7 @@ footer{
     text-decoration: none;
     color: lemonchiffon;
 }
-/*----------------------------------------*/
-/*Логин - Регистрация - Создание*/
+                            /*Логин - Регистрация - Создание*/
 form{
     display: flex;
     justify-content: center;
@@ -124,6 +129,8 @@ form>input{
 }
 .form_login{
     margin-top: 50px;
+    background-color: #d9dcd5;
+    border-radius: 20px;
 }
 .input > input{
     width: 400px;
@@ -143,8 +150,7 @@ form>input{
     flex-direction: column;
     align-items: center;
 }
-/*----------------------------------------*/
-/*Мои заказы*/
+                                        /*Мои заказы*/
 .order_list{
     margin-top: 60px;
 }
@@ -152,8 +158,7 @@ form>input{
     text-decoration: none;
     color: lemonchiffon;
 }
-/*----------------------------------------*/
-/*Адаптивка*/
+                                        /*Адаптивка*/
 @media screen and (max-width: 768px){
     header {
         display: flex;

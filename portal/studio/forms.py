@@ -48,7 +48,7 @@ class UpdateOrderForm(forms.ModelForm):
     )
     status = forms.ChoiceField(label='Статус заявки', help_text='Статус', widget=forms.Select, choices=LOAN_STATUS)
     img = forms.ImageField(label='Фото работы', required=False)
-    comment = forms.CharField(label='Комментарий', required=False, help_text='Комментарий')
+    comment = forms.CharField(label='Ваше описание', required=False, help_text='Комментарий')
 
     def clean(self):
         super().clean()

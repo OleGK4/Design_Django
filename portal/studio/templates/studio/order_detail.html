@@ -19,12 +19,12 @@
                 <p><strong>Описание:</strong> {{ order.summary }}</p>
                 <p><strong>Категория:</strong> {{ order.category }}</p>
                 <p><strong>Статус:</strong> {{ order.get_status_name }}</p>
-                <p class="strong_p"><strong class="strong">Фото:</strong> <img src="{% thumbnail order.photo_file 'index' %}"></p>
+                <p class="strong_p"><strong class="strong">Фото:</strong> <img class="image" src="{% thumbnail order.photo_file 'index' %}"></p>
                 {% if order.status == 'a' %}
                 <p><strong>Коментарий:</strong> {{ order.comment }}</p>
                 {% endif %}
                 {% if order.status == 'c' %}
-                <p class="strong_p"><strong class="strong">Результат:</strong> <img src="{% thumbnail order.img 'index' %}"></p>
+                <p class="strong_p"><strong class="strong">Результат:</strong> <img class="image" src="{% thumbnail order.img 'index' %}"></p>
                 {% endif %}
                 {% if order.status != 'a' and order.status != 'c' %}
                 <div class="link">

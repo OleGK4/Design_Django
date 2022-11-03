@@ -17,7 +17,7 @@
             <a href="{% url 'logout'%}?next={{request.path}}">Выйти</a>
         </div>
         <div class="content">
-            <h1>Мои заказы</h1>
+            <h2>Мои заказы</h2>
             <div class="link_filter"><p>Фильтр по статусу:</p>
                 {% if not request.GET.status %}
                 <p>Все</p>
